@@ -139,9 +139,8 @@ export default class Alert {
     // We need to get the middle of the data range (1hour).
     // That's why we need to remove 29 minutes from the time
     const midTime = time - 29 * 60 * 1000;
-    /* eslint-disable max-len */
-    return `https://ui.kadira.io/apps/${appId}/${info.urlTab}/?range=3600000&date=${midTime}`;
-    /* eslint-enable max-len */
+    const url = process.env.APP_URL || "https://ui.kadira.io/";
+    return `${url}apps/${appId}/${info.urlTab}/?range=3600000&date=${midTime}`;
   }
 
   _getCaption() {
